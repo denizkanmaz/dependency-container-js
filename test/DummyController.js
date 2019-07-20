@@ -7,7 +7,7 @@ class DummyController {
 	
 	/**
 	 * Initializes an instance of the DummyController.
-	 * @param {DIContainer} ioc - Instance of the IoC container (Mandatory).
+	 * @param {DependencyContainer} ioc - Instance of the IoC container (Mandatory).
 	 * @param {object} options - Initialization options (Optional).
 	 */
 	constructor(ioc, options){

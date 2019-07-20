@@ -9,14 +9,14 @@
 //  LICENSE file for more details.
 
 /**
- * DIContainer is a simple IOC container.
+ * DependencyContainer is a simple IOC container.
  * Allows to set dependent services and get them lazily when they needed.
- * @class DIContainer
+ * @class DependencyContainer
  */
-class DIContainer {
+class DependencyContainer {
 
 	/**
-	 * Initializes an instance of the DIContainer.
+	 * Initializes an instance of the DependencyContainer.
 	 */
 	constructor() {
 		this.__services = {};
@@ -86,4 +86,4 @@ class DIContainer {
 }
 
 
-module.exports = DIContainer;
+module.exports = DependencyContainer;

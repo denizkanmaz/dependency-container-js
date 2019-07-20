@@ -1,13 +1,13 @@
-const VanilDIContainer = require('../src/DIContainer');
+const DependencyContainer = require('../src/DependencyContainer');
 const DummyController = require('./DummyController');
 const DummyService = require('./DummyService.js');
 
-describe('DIContainer', () => {
+describe('DependencyContainer', () => {
 
 	let diContainer = null;
 
 	beforeEach(() => {
-		diContainer = new VanilDIContainer();
+		diContainer = new DependencyContainer();
 	});
 
 	/* singleton */

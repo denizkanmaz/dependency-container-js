@@ -11,10 +11,10 @@ You can get the latest release from the official [npmjs.com feed](https://www.np
 #### Importing the module and initializing an instance
 ```javascript
 // Import the module.
-const DIContainer = require('@caffeekit/Dependency-container-js');
+const DependencyContainer = require('@caffeekit/Dependency-container-js');
 
 // Initialize an instance
-const diContainer = new DIContainer();
+const diContainer = new DependencyContainer();
 ```
 
 #### Registering services.
@@ -41,7 +41,7 @@ const dummyController = diConteiner.resolve('DummyController');
 
 ```
 
-#### Full demonstration:
+### Full demonstration:
 ```javascript
 // Import the module.
 const DIContainer = require('@caffeekit/Dependency-container-js');
@@ -51,7 +51,7 @@ const DummyController = require('./DummyController');
 const DummyService = require('DummyService');
 
 // Initialize an instance of the DIController.
-const diContainer = new DIContainer();
+const diContainer = new DependencyContainer();
 
 // Register.
 diContainer.transient('DummyService', () => new DummyService())
@@ -80,7 +80,7 @@ class DummyController {
 	
 	/**
 	 * Initializes an instance of the DummyController.
-	 * @param {DIContainer} ioc - Instance of the IoC container (Mandatory).
+	 * @param {DependencyContainer} ioc - Instance of the IoC container (Mandatory).
 	 * @param {object} options - Initialization options (Optional).
 	 */
 	constructor(ioc, options){

@@ -2,7 +2,7 @@
   "name": "@caffekit/dependency-container",
   "version": "1.0.0-beta1",
   "description": "A simple IOC container for NodeJS.",
-  "main": "./src/DIContainer.js",
+  "main": "./src/DependencyContainer.js",
   "directories": {
     "test": "test"
   },
