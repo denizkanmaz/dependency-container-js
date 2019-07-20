@@ -1,4 +1,4 @@
-# @caffeekit/dependency-container-js v1.0.0 beta1
+# @caffeekit/dependency-container-js v1.0.0-beta1
 
 "@caffeekit/dependency-container-js" is a simple IOC container pattern for NodeJS.
 
