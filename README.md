@@ -4,7 +4,7 @@
 
 You can get the latest release from the official [npmjs.com feed](https://www.npmjs.com/package/caffeekit/dependency-container-js) or from the [github releases page](https://github.com/caffeekit/dependency-container-js/releases).
 
-[![Build Status](https://travis-ci.com/caffeekit/dependency-container-js.svg?branch=master)](https://travis-ci.com/caffeekit/dependency-container-js)
+[![Build Status](https://travis-ci.org/caffeekit/dependency-container-js.svg?branch=master)](https://travis-ci.org/caffeekit/dependency-container-js)
 
 ## Getting Started
 
