@@ -1,17 +1,17 @@
-# @caffeekit/dependency-container-js v1.0.0-beta1
+# dependency-container-js v1.0.0-beta1
 
-"@caffeekit/dependency-container-js" is a simple IOC container pattern for NodeJS.
+"dependency-container-js" is a simple IOC container pattern for NodeJS.
 
-You can get the latest release from the official [npmjs.com feed](https://www.npmjs.com/package/caffeekit/dependency-container-js) or from the [github releases page](https://github.com/caffeekit/dependency-container-js/releases).
+You can get the latest release from the official [npmjs.com feed](https://www.npmjs.com/package/dependency-container-js) or from the [github releases page](https://github.com/denizkanmaz/dependency-container-js/releases).
 
-[![Build Status](https://travis-ci.org/caffeekit/dependency-container-js.svg?branch=master)](https://travis-ci.org/caffeekit/dependency-container-js)
+[![Build Status](https://travis-ci.org/denizkanmaz/dependency-container-js.svg?branch=master)](https://travis-ci.org/denizkanmaz/dependency-container-js)
 
 ## Getting Started
 
 #### Importing the module and initializing an instance
 ```javascript
 // Import the module.
-const DependencyContainer = require('@caffeekit/Dependency-container-js');
+const DependencyContainer = require('dependency-container-js');
 
 // Initialize an instance
 const diContainer = new DependencyContainer();
@@ -44,7 +44,7 @@ const dummyController = diConteiner.resolve('DummyController');
 ### Full demonstration:
 ```javascript
 // Import the module.
-const DIContainer = require('@caffeekit/Dependency-container-js');
+const DIContainer = require('dependency-container-js');
 
 // Import dependent modules.
 const DummyController = require('./DummyController');
