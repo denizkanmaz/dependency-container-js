@@ -1,5 +1,5 @@
 /**
- * DummyService is a dummy to demonstrate how to register a service for an IoC
+ * DummyService is a dummy service to demonstrate how to register a service for an IoC
  * container.
  * @class DummyService
  */

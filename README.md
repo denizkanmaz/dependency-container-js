@@ -1,4 +1,4 @@
-# dependency-container-js v1.0.0-beta1
+# dependency-container-js v1.0.0-beta2
 
 "dependency-container-js" is a simple IOC container pattern for NodeJS.
 
@@ -42,30 +42,23 @@ const dummyController = diConteiner.resolve('DummyController');
 ```
 
 ### Full demonstration:
-```javascript
-// Import the module.
-const DIContainer = require('dependency-container-js');
-
-// Import dependent modules.
-const DummyController = require('./DummyController');
-const DummyService = require('DummyService');
-
-// Initialize an instance of the DIController.
-const diContainer = new DependencyContainer();
-
-// Register.
-diContainer.transient('DummyService', () => new DummyService())
-.transient('DummyContainer', ioc => new DummyContoller(ioc))
-```
 
 #### Content of DummyService.js:
 ```javascript
 /**
- * DummyService is a dummy to demonstrate how to register a service for an IoC
+ * DummyService is a dummy service to demonstrate how to register a service for an IoC
  * container.
  * @class DummyService
  */
-class DummyService { }
+class DummyService {
+
+	/**
+	 * Gets the necessary message.
+	 */
+	getMessage(){
+		return 'Hello there!';
+	}
+}
 
 module.exports = DummyService;
 ```
@@ -77,29 +70,58 @@ module.exports = DummyService;
  * @class DummyController
  */
 class DummyController {
-	
-	/**
-	 * Initializes an instance of the DummyController.
-	 * @param {DependencyContainer} ioc - Instance of the IoC container (Mandatory).
-	 * @param {object} options - Initialization options (Optional).
-	 */
-	constructor(ioc, options){
+    
+    /**
+     * Initializes an instance of the DummyController.
+     * @param {DependencyContainer} ioc - Instance of the IoC container (Mandatory).
+     * @param {object} options - Initialization options (Optional).
+     */
+    constructor(ioc, options){
+ 
+        // Resolve necessary dependencies.
+        this.__dummyService = ioc.resolve('DummyService');
+        // this.__myOtherLovelyService = ioc.resolve('OtherLovelyService');
+ 
+        // Assign options to the local field.
+        this.__options = options;
+    }
 
-		// Resolve necessary dependencies.
-		this.__dummyService = ioc.resolve('DummyService');
-		// this.__myOtherLovelyService = ioc.resolve('OtherLovelyService');
-
-		// Assign options to the local field.
-		this.__options = options;
-	}
+    /**
+     * Writes the necessary message to the console.
+     */
+    saySomething(){
+        console.log(this.__dummyService.getMessage());
+    }
 }
-
+ 
 module.exports = DummyController;
+```
+
+#### Content of index.js
+```javascript
+// Import the module.
+const DependencyContainer = require('dependency-container-js');
+
+// Import dependent modules.
+const DummyController = require('./DummyController');
+const DummyService = require('./DummyService');
+
+// Initialize an instance of the DIController.
+const diContainer = new DependencyContainer();
+
+// Register.
+diContainer.transient('DummyService', () => new DummyService())
+	.transient('DummyController', ioc => new DummyController(ioc))
+
+
+// Consider, this is another block of code from another js module.
+const controller = diContainer.resolve('DummyController');
+controller.saySomething();
 ```
 
 ## Versioning
 
-Used [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/denizkanmaz/vanil-stopwatch-js/tags). 
+Used [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/denizkanmaz/dependency-container-js/tags). 
 
 ## Authors
 

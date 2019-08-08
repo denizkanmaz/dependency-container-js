@@ -1,6 +1,6 @@
 {
   "name": "dependency-container-js",
-  "version": "1.0.0-beta1",
+  "version": "1.0.0-beta2",
   "description": "A simple IOC container for NodeJS.",
   "main": "./src/DependencyContainer.js",
   "scripts": {
