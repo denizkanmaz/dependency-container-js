@@ -3,15 +3,12 @@
   "version": "1.0.0-beta1",
   "description": "A simple IOC container for NodeJS.",
   "main": "./src/DependencyContainer.js",
-  "directories": {
-    "test": "test"
-  },
   "scripts": {
     "test": "./node_modules/.bin/jest ./test"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/caffeekit/dependency-container-js.git"
+    "url": "git+https://github.com/denizkanmaz/dependency-container-js.git"
   },
   "keywords": [
     "[\"ioc\"",
@@ -22,9 +19,9 @@
   "author": "Deniz Kanmaz",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/caffeekit/dependency-container-js/issues"
+    "url": "https://github.com/denizkanmaz/dependency-container-js/issues"
   },
-  "homepage": "https://github.com/caffeekit/dependency-container-js#readme",
+  "homepage": "https://github.com/denizkanmaz/dependency-container-js#readme",
   "devDependencies": {
     "jest": "^24.8.0"
   }
