@@ -121,7 +121,7 @@ controller.saySomething();
 
 ## Versioning
 
-Used [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/denizkanmaz/vanil-stopwatch-js/tags). 
+Used [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/denizkanmaz/dependency-container-js/tags). 
 
 ## Authors
 
