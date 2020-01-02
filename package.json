@@ -8,6 +8,7 @@
     "build": "./node_modules/.bin/tsc",
     "lint": "./node_modules/.bin/tslint -c tslint.json 'src/**/*.ts'"
   },
+  "isolatedModules": true,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/denizkanmaz/dependency-container-js.git"

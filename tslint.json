@@ -3,7 +3,44 @@
     "extends": [
         "tslint:recommended"
     ],
-    "jsRules": {},
-    "rules": {},
-    "rulesDirectory": []
+    "rules": {
+        "max-line-length": {
+            "options": [
+                120
+            ]
+        },
+        "indent": [
+            true,
+            "tabs",
+            4
+        ],
+        "quotemark": [
+            true,
+            "single",
+            "jsx-double"
+        ],
+        "new-parens": true,
+        "no-arg": true,
+        "no-bitwise": true,
+        "no-conditional-assignment": true,
+        "no-consecutive-blank-lines": false,
+        "no-console": {
+            "severity": "warning",
+            "options": [
+                "debug",
+                "info",
+                "log",
+                "time",
+                "timeEnd",
+                "trace"
+            ]
+        }
+    },
+    "jsRules": {
+        "max-line-length": {
+            "options": [
+                120
+            ]
+        }
+    }
 }
