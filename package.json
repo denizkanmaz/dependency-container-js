@@ -4,7 +4,9 @@
   "description": "A simple IOC container for NodeJS.",
   "main": "./src/DependencyContainer.js",
   "scripts": {
-    "test": "./node_modules/.bin/jest ./test"
+    "test": "./node_modules/.bin/jest ./test",
+    "build": "./node_modules/.bin/tsc",
+    "lint": "./node_modules/.bin/tslint -c tslint.json 'src/**/*.ts'"
   },
   "repository": {
     "type": "git",
@@ -23,6 +25,8 @@
   },
   "homepage": "https://github.com/denizkanmaz/dependency-container-js#readme",
   "devDependencies": {
-    "jest": "^24.8.0"
+    "jest": "^24.8.0",
+    "tslint": "^5.20.1",
+    "typescript": "^3.7.4"
   }
 }
