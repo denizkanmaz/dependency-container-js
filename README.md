@@ -23,21 +23,21 @@ const diContainer = new DependencyContainer();
 diContainer.singleton('DummyService', () => new DummyService());
 
 // Registering a service as transient.
-diConteiner.transient('DummyService', () => new DummyService());
+diContainer.transient('DummyService', () => new DummyService());
 
 ```
 
 #### Injecting IoC container to components.
 ```javascript
 // Register component named 'DummyController'.
-diConteiner.transient('DummyController', ioc => new DummyController(ioc));
+diContainer.transient('DummyController', ioc => new DummyController(ioc));
 
 ```
 
 #### Resolving a service
 ```javascript
 // Resolve service named 'DummyController'.
-const dummyController = diConteiner.resolve('DummyController');
+const dummyController = diContainer.resolve('DummyController');
 
 ```
 
