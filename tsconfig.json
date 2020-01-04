@@ -1,0 +1,25 @@
+{
+    "compileOnSave": false,
+    "compilerOptions": {
+        "outDir": "./es",
+        "allowJs": false,
+        "module": "ES2015",
+        "target": "ES6",
+        "esModuleInterop": false,
+        "declaration": true,
+        "declarationDir": "./types",
+        "moduleResolution": "Node",
+        "removeComments": false
+    },
+    "include": [
+        "src/**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "**/*.spec.ts"
+    ],
+    "lib": [
+        "es2015",
+        "dom"
+    ]
+}

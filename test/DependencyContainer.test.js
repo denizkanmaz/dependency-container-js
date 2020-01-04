@@ -1,4 +1,4 @@
-const DependencyContainer = require('../src/DependencyContainer');
+const { DependencyContainer } = require('../src/DependencyContainer');
 const DummyController = require('./DummyController');
 const DummyService = require('./DummyService.js');
 

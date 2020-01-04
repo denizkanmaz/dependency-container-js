@@ -1,28 +1,58 @@
 {
   "name": "dependency-container-js",
-  "version": "1.0.0-beta2",
-  "description": "A simple IOC container for NodeJS.",
-  "main": "./src/DependencyContainer.js",
+  "version": "2.0.0-beta1",
+  "description": "A simple IoC container for NodeJS.",
+  "main": "./lib/DependencyContainer.js",
+  "module": "./es/DependencyContainer.js",
+  "jsnext:main": "./es/DependencyContainer.js",
+  "unpkg": "./dist/dependency-container.min.js",
+  "types": "./types/DependencyContainer.d.ts",
   "scripts": {
-    "test": "./node_modules/.bin/jest ./test"
+    "lint": "./node_modules/.bin/tslint -c tslint.json 'src/**/*.ts'",
+    "test": "./node_modules/.bin/jest ./test",
+    "test:cov": "npm run-script test -- --collectCoverage",
+    "build": "npm run-script build:es && npm run-script build:cjs && npm run-script build:min",
+    "build:es": "./node_modules/.bin/tsc",
+    "build:cjs": "./node_modules/.bin/babel --plugins @babel/plugin-transform-modules-commonjs ./es/ --out-dir lib/",
+    "build:min": "./node_modules/.bin/webpack"
   },
+  "files": [
+    "dist",
+    "lib",
+    "es",
+    "src",
+    "types"
+  ],
+  "isolatedModules": true,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/denizkanmaz/dependency-container-js.git"
   },
   "keywords": [
-    "[\"ioc\"",
-    "\"dependency\"",
-    "\"injection\"",
-    "\"container\"]"
+    "ioc",
+    "inverion of control",
+    "dependency",
+    "injection",
+    "container"
   ],
-  "author": "Deniz Kanmaz",
+  "author": "Deniz Kanmaz <denizkanmaz@gmail.com> (https://github.com/denizkanmaz)",
+  "engines": {
+    "node": ">=v10.17.0"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/denizkanmaz/dependency-container-js/issues"
   },
   "homepage": "https://github.com/denizkanmaz/dependency-container-js#readme",
   "devDependencies": {
-    "jest": "^24.8.0"
+    "@babel/cli": "^7.7.7",
+    "@babel/plugin-transform-modules-commonjs": "^7.7.5",
+    "jest": "^24.8.0",
+    "ts-jest": "^24.2.0",
+    "ts-loader": "^6.2.1",
+    "tslint": "^5.20.1",
+    "typescript": "^3.7.4",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
   }
 }
