@@ -1,4 +1,4 @@
-# dependency-container-js v1.0.0-beta2
+# dependency-container-js v2.0.0-beta1
 
 "dependency-container-js" is a simple IOC container pattern for NodeJS.
 
@@ -11,7 +11,7 @@ You can get the latest release from the official [npmjs.com feed](https://www.np
 #### Importing the module and initializing an instance
 ```javascript
 // Import the module.
-const DependencyContainer = require('dependency-container-js');
+const { DependencyContainer } = require('dependency-container-js');
 
 // Initialize an instance
 const diContainer = new DependencyContainer();
@@ -23,7 +23,7 @@ const diContainer = new DependencyContainer();
 diContainer.singleton('DummyService', () => new DummyService());
 
 // Registering a service as transient.
-diConteiner.singleton('DummyService', () => new DummyService());
+diConteiner.transient('DummyService', () => new DummyService());
 
 ```
 
@@ -100,7 +100,7 @@ module.exports = DummyController;
 #### Content of index.js
 ```javascript
 // Import the module.
-const DependencyContainer = require('dependency-container-js');
+const { DependencyContainer } = require('dependency-container-js');
 
 // Import dependent modules.
 const DummyController = require('./DummyController');
