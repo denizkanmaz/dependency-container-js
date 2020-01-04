@@ -11,7 +11,7 @@
         },
         "indent": [
             true,
-            "tabs",
+            "spaces",
             4
         ],
         "quotemark": [
@@ -20,6 +20,7 @@
             "jsx-double"
         ],
         "new-parens": true,
+        "arrow-parens": false,
         "no-arg": true,
         "no-bitwise": true,
         "no-conditional-assignment": true,
@@ -33,6 +34,11 @@
                 "time",
                 "timeEnd",
                 "trace"
+            ]
+        },
+        "variable-name": {
+            "options": [
+                "allow-leading-underscore"
             ]
         }
     },
