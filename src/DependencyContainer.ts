@@ -8,119 +8,77 @@
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 //  LICENSE file for more details.
 
+import { Instance } from './Instance';
+import { Service } from './Service';
+
 /**
  * DependencyContainer is a simple IOC container.
  * Allows to set dependent services and get them lazily when they needed.
  * @class DependencyContainer
  */
-export default class DependencyContainer {
+export class DependencyContainer {
 
-	/**
-	 * Initializes an instance of the DependencyContainer.
-	 */
-	constructor() { }
+    private readonly TRANSIENT = 'transient';
+    private readonly SINGLETON = 'singleton';
 
-	private services: Service[];
-	private instances: any[];
+    private services: Service[] = [];
+    private instances: Instance[] = [];
 
-	/**
-	 * Adds given service to the container as specified type of dependency.
-	 * @param {string} name - Name of the service.
-	 * @param {string} type - Dependency type (singleton, transient).
-	 * @param {function} constructor - Constructor to be executed at resolve operation.
-	 */
-	private addService(name: string, type: string, constructor: (ioc: DependencyContainer) => any) {
+    /**
+     * Adds given service to the container as singleton.
+     * @param {string} name - Name of the service.
+     * @param {function} constructor - Constructor to be executed at resolve operation.
+     */
+    public singleton(name: string, constructor: (ioc: DependencyContainer) => any) {
+        this.addService(name, this.SINGLETON, constructor);
+        return this;
+    }
 
-		if (this.services.filter(x => x.name === name).length === 0) {
-			throw new Error(`There is already a registered service with name "${name}".`);
-		}
+    /**
+     * Adds given service to the container as transient.
+     * @param {string} name - Name of the service.
+     * @param {function} constructor - Constructor to be executed at resolve operation.
+     */
+    public transient(name: string, constructor: (ioc: DependencyContainer) => any) {
+        this.addService(name, this.TRANSIENT, constructor);
+        return this;
+    }
 
-		this.services.push(new Service(name, type, constructor));
-	}
+    /**
+     * Resolves desired service with given name.
+     * @param {string} name - Name of the desired service.
+     */
+    public resolve(name: string) {
+        const serv = this.services.filter(x => x.name === name)[0];
 
-	/**
-	 * Adds given service to the container as singleton.
-	 * @param {string} name - Name of the service.
-	 * @param {function} constructor - Constructor to be executed at resolve operation.
-	 */
-	singleton(name: string, constructor: (ioc: DependencyContainer) => any) {
-		this.addService(name, 'singleton', constructor);
-		return this;
-	}
+        if (!serv) {
+            throw new Error(`There is no service registered with name "${name}".`);
+        }
 
-	/**
-	 * Adds given service to the container as transient.
-	 * @param {string} name - Name of the service.
-	 * @param {function} constructor - Constructor to be executed at resolve operation.
-	 */
-	transient(name: string, constructor: (ioc: DependencyContainer) => any) {
-		this.addService(name, 'transient', constructor);
-		return this;
-	}
+        let inst = this.instances.filter(x => x.name === name)[0];
 
-	/**
-	 * Resolves desired service with given name.
-	 * @param {string} name - Name of the desired service.
-	 */
-	resolve(name: string) {
-		let serv = this.services.filter(x => x.name === name)[0];
+        if (inst && serv.type === this.SINGLETON) {
+            return inst.objectInstance;
+        }
 
-		if (!serv) {
-			throw new Error(`There is no service registered with name "${name}".`);
-		}
+        inst = serv.initializer(this);
+        this.instances.push(new Instance(name, inst));
 
-		let inst = this.instances.filter(x => x.name === name)[0];
+        return inst;
+    }
 
-		if (inst && serv.type === 'singleton') {
-			return inst;
-		}
+    /**
+     * Adds given service to the container as specified type of dependency.
+     * @param {string} name - Name of the service.
+     * @param {string} type - Dependency type (singleton, transient).
+     * @param {function} constructor - Constructor to be executed at resolve operation.
+     */
+    private addService(name: string, type: string, constructor: (ioc: DependencyContainer) => any) {
 
-		inst = serv.initializer(this);
-		this.instances.push(new Instance(name, inst));
+        if (this.services.filter(x => x.name === name).length > 0) {
+            throw new Error(`There is already a registered service with name "${name}".`);
+        }
 
-		return inst;
-	}
-}
-
-class Service {
-
-	constructor(name: string, type: string, initializer: (ioc: DependencyContainer) => any) {
-		this._name = name;
-		this._initializer = initializer;
-		this._type = type;
-	}
-
-	private _name: string;
-	private _initializer: (ioc: DependencyContainer) => any;
-	private _type: string;
-
-	public get name(): string {
-		return this._name;
-	}
-
-	public get initializer(): (ioc: DependencyContainer) => any {
-		return this._initializer;
-	}
-
-	public get type(): string {
-		return this._type;
-	}
-}
-
-class Instance {
-	constructor(name: string, objectInstance: any) {
-		this._name = name;
-		this._objectInstance = objectInstance;
-	}
-
-	private _name: string;
-	private _objectInstance: any;
-
-	public get name(): string {
-		return this._name;
-	}
-
-	public get objectInstance(): any {
-		return this._objectInstance;
-	}
+        this.services.push(new Service(name, type, constructor));
+    }
 }
