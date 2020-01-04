@@ -61,4 +61,6 @@ typings/
 .next
 
 # Build output
+es
+lib
 dist

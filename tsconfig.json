@@ -1,16 +1,15 @@
 {
     "compileOnSave": false,
     "compilerOptions": {
-        "outDir": "./dist",
+        "outDir": "./es",
         "allowJs": false,
-        "declaration": true,
-        "sourceMap": true,
         "module": "ES2015",
-        "moduleResolution": "node",
-        "noImplicitAny": true,
-        "removeComments": false,
-        "preserveConstEnums": true,
-        "target": "es6"
+        "target": "ES6",
+        "esModuleInterop": false,
+        "declaration": true,
+        "declarationDir": "./types",
+        "moduleResolution": "Node",
+        "removeComments": false
     },
     "include": [
         "src/**/*"
@@ -20,7 +19,7 @@
         "**/*.spec.ts"
     ],
     "lib": [
-        "es2018",
+        "es2015",
         "dom"
     ]
 }
